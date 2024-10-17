@@ -114,6 +114,7 @@ async def main():
                 if token == None:
                     token = await tom.user_login(query)
                 log_message(f"Account {index+1}/{sum} {user.get('username','')}", color=Fore.CYAN)
+                await tom.list_tasks(token=token, query=query)
                 if auto_combo == 'y':
                     await tom.puzzle_task(token, query)
                 await asyncio.sleep(2)   
