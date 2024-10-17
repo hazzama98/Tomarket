@@ -28,13 +28,15 @@ def parse_query(query: str):
 
 def get(id):
     tokens = json.loads(open("tokens.json").read())
-    if str(id) not in tokens.keys():
+    id_str = str(id)
+    if id_str not in tokens:
         return None
-    return tokens[str(id)]
+    return tokens[id_str]
 
 def save(id, token):
     tokens = json.loads(open("tokens.json").read())
-    tokens[str(id)] = token
+    id_str = str(id)
+    tokens[id_str] = token
     open("tokens.json", "w").write(json.dumps(tokens, indent=4))
 
 async def generate_token():
